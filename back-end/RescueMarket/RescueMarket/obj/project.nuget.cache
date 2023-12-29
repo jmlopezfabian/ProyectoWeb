@@ -1,15 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "qyAfxBqv2B5bQBD2Hz9dR++tem3uhOVs+Lv8afB2rZkGoN89S8117qs30aHxT1IhbjsKKLUQnZez+VaEA+AC5A==",
+  "dgSpecHash": "YxEMojo7kwu0fOjCzneW39SV4p91v/PANl0ofdUMYRMzS8mRIQai/HHqviERPEOSLARuwF3NFipFoM7D/h7PPw==",
   "success": true,
-  "projectFilePath": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
-  "expectedPackageFiles": [
-    "C:\\Users\\jesus\\.nuget\\packages\\microsoft.extensions.apidescription.server\\6.0.5\\microsoft.extensions.apidescription.server.6.0.5.nupkg.sha512",
-    "C:\\Users\\jesus\\.nuget\\packages\\microsoft.openapi\\1.2.3\\microsoft.openapi.1.2.3.nupkg.sha512",
-    "C:\\Users\\jesus\\.nuget\\packages\\swashbuckle.aspnetcore\\6.4.0\\swashbuckle.aspnetcore.6.4.0.nupkg.sha512",
-    "C:\\Users\\jesus\\.nuget\\packages\\swashbuckle.aspnetcore.swagger\\6.4.0\\swashbuckle.aspnetcore.swagger.6.4.0.nupkg.sha512",
-    "C:\\Users\\jesus\\.nuget\\packages\\swashbuckle.aspnetcore.swaggergen\\6.4.0\\swashbuckle.aspnetcore.swaggergen.6.4.0.nupkg.sha512",
-    "C:\\Users\\jesus\\.nuget\\packages\\swashbuckle.aspnetcore.swaggerui\\6.4.0\\swashbuckle.aspnetcore.swaggerui.6.4.0.nupkg.sha512"
-  ],
+  "projectFilePath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
+  "expectedPackageFiles": [],
   "logs": []
 }
