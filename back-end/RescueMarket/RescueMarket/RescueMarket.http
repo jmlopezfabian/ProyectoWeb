@@ -1,0 +1,6 @@
+@RescueMarket_HostAddress = http://localhost:5027
+
+GET {{RescueMarket_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
