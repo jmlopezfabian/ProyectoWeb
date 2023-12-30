@@ -52,6 +52,8 @@ namespace RescueMarket.Context
                 entity.Property(u => u.ApellidoMaterno);
                 entity.Property(u => u.Nombre);
                 entity.Property(u => u.FechaNacimiento);
+
+
             });
         }
     }
