@@ -81,7 +81,7 @@ namespace RescueMarket.Controllers
                     flag = true;
                 }
             }
-            return new JsonResult(flag); ;
+            return new JsonResult(flag); 
         }
     }
 }
