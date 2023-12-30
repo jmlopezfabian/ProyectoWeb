@@ -2,7 +2,7 @@
 using RescueMarket.Model;
 namespace RescueMarket.Context
 {
-    public class Context : DbContext
+    public class RMContext : DbContext
     {
         public DbSet <Cliente>Clientes { get; set; } 
         public DbSet <Compra> Compras { get; set; }
