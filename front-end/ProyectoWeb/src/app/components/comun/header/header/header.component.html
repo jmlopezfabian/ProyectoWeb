@@ -1,0 +1,26 @@
+<!-- Encabezado de la página con estilo de texto gris y fuente corporal -->
+<header class="text-white-100 bg-blue-900 body-font">
+  <!-- Contenedor flexible con márgenes automáticos y diseño responsivo -->
+  <div class="container mx-auto flex flex-wrap p-5 flex-col md:flex-row items-center">
+      <!-- Enlace con diseño flexible, fuente mediana y contenido centrado verticalmente -->
+      <a class="flex title-font font-medium items-center text-white mb-4 md:mb-0">
+          <!-- Icono SVG con fondo verde y diseño circular -->
+          <svg xmlns="http://www.w3.org/2000/svg" fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-10 h-10 text-white p-2 bg-green-500 rounded-full" viewBox="0 0 24 24">
+            <path d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"></path>
+          </svg>
+          <!-- Texto con margen a la izquierda -->
+          <span class="ml-3 text-xl">Proyecto web</span>
+      </a>
+      <!-- Componente personalizado 'app-navegation' con estilos específicos para dispositivos medianos -->
+      <app-navegation class="md:ml-auto md:mr-auto flex flex-wrap items-center text-base justify-center"></app-navegation>
+
+      <!-- Botón con diseño en línea, fondo gris claro y efectos de hover -->
+      <button class="inline-flex items-center bg-green-600 border-0 py-1 px-3 focus:outline-none hover:bg-green-900 rounded text-base mt-4 md:mt-0" routerLink="login" routerLinkActive="active" [routerLinkActiveOptions]="{exact:true}">
+        <!-- Texto 'Perfil' seguido de un icono SVG -->
+        Ingresar
+        <svg fill="none" stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" class="w-4 h-4 ml-1" viewBox="0 0 24 24">
+            <path d="M5 12h14M12 5l7 7-7 7"></path>
+        </svg>
+      </button>
+  </div>
+</header>
