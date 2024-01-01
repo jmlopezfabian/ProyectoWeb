@@ -6,24 +6,21 @@
     <div class="flex flex-col text-center w-full mb-12">
       <!-- Título con estilos específicos -->
       <h1 class="sm:text-3xl text-2xl font-medium title-font mb-4 text-black">Ingreso</h1>
-      <!-- Párrafo con ancho grande, centrado y estilos específicos -->
-      <p class="lg:w-2/3 mx-auto leading-relaxed text-black">Porfavor ingresa tu usuario y contraseña</p>
     </div>
     <!-- Contenedor flexible con estilos específicos y espacio entre elementos -->
     <div class="flex lg:w-2/3 w-full sm:flex-row flex-col mx-auto px-8 sm:px-0 items-end sm:space-x-4 sm:space-y-0 space-y-4">
-      <!-- Campo de entrada de texto para el nombre de usuario -->
+      <!-- Campo de entrada de texto para el nombre de usuario y contraseña-->
       <div class="relative sm:mb-0 flex-grow w-full">
         <label for="full-name" class="leading-7 text-sm text-black">Usuario</label>
-        <input type="text" id="full-name" name="full-name" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <input type="text" id="full-name" name="full-name" class="w-full bg-gray-300 bg-opacity-40 rounded border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-900 focus:bg-transparent text-base outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+
+        <label for="password" class="leading-7 text-sm text-black">Contraseña</label>
+        <input type="password" id="password" name="password" class="w-full bg-gray-300 bg-opacity-40 rounded border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-900 focus:bg-transparent text-base outline-none text-gray-900 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
+        <button class="text-black bg-green-600 border-0 py-2 px-8 focus:outline-none hover:bg-green-700 rounded text-lg w-auto mt-4">Continuar</button>
+        
       </div>
-      <!-- Campo de entrada de texto para la contraseña -->
-      <div class="relative sm:mb-0 flex-grow w-full">
-        <label for="email" class="leading-7 text-sm text-black">Contraseña</label>
-        <input type="email" id="email" name="email" class="w-full bg-gray-800 bg-opacity-40 rounded border border-gray-700 focus:border-green-500 focus:ring-2 focus:ring-green-900 focus:bg-transparent text-base outline-none text-gray-100 py-1 px-3 leading-8 transition-colors duration-200 ease-in-out">
-      </div>
+
       <!-- Botón de ingreso con estilos específicos y ancho automático -->
-      <button class="text-white bg-green-500 border-0 py-2 px-8 focus:outline-none hover:bg-green-600 rounded text-lg w-auto">
-        Ingresar</button>
     </div>
     
     <p class="lg:w-2/3 mx-auto leading-relaxed text-black">¿No tienes una cuenta? Registrate!</p>
