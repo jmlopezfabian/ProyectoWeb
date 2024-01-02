@@ -5,54 +5,58 @@ using RescueMarket.Model;
 
 namespace RescueMarket.Controllers
 {
-    [Route ("Productos")]
+    [Route("Clientes")]
     [ApiController]
-    public class ProductoController : ControllerBase
+    public class ClienteController : ControllerBase
     {
         [HttpGet]
-        public JsonResult ProductoGet()
+        public JsonResult GetClientes()
         {
-            List<Producto> productos = new List<Producto>();
+            List<Cliente> clientes = new List<Cliente>();
             using (RMContext context = new RMContext())
             {
-                var aux = context.Productos;
+                var aux = context.Clientes;
                 foreach(var item in aux)
                 {
-                    productos.Add(new Producto
+                    clientes.Add(new Usuario
                     {
-                        ID_producto = item.ID_producto,
-                        Nombre_Producto = item.Nombre_Producto,
-                        Descripcion = item.Descripcion,
-                        Precio = item.Precio
+                        Id_cliente = item.Id_cliente,
+                        NombreUsuario = item.NombreUsuario,
+                        Correo = item.Correo,
+                        Contraseña = item.Contraseña,
+                        ApellidoPaterno = item.ApellidoPaterno,
+                        ApellidoMaterno = item.ApellidoMaterno,
+                        Nombre = item.Nombre,
+                        FechaNacimiento = item.FechaNacimiento
                     });
                 }
             }
-            return new JsonResult(productos);
+            return new JsonResult(clientes);
         }
         [HttpPost]
-        public JsonResult ProductoPost([FromBody] Producto productos)
+        public JsonResult PostUsuarios([FromBody] Cliente clientes)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                context.Productos.Add(productos);
+                context.Clientes.Add(clientes);
                 context.SaveChanges();
                 flag = true;
             }
             return new JsonResult(flag);
         }
         [HttpPatch]
-        public JsonResult UpdateProducto([FromBody] Producto productos)
+        public JsonResult UpdateClientes([FromBody] Cliente clientes)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productos.SingleOrDefault(p => p.ID_producto == productos.ID_producto);
+                var existe = context.Clientes.SingleOrDefault(c => c.Id_cliente == clientes.Id_cliente);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Productos.Attach(productos);
-                    context.Entry(productos).State = EntityState.Modified;
+                    context.Clientes.Attach(clientes);
+                    context.Entry(clientes).State = EntityState.Modified;
                     context.SaveChanges();
                     flag = true;
                 }
@@ -60,22 +64,22 @@ namespace RescueMarket.Controllers
             return new JsonResult(flag);
         }
         [HttpDelete]
-        public JsonResult DeleteProducto([FromBody] Producto productos)
+        public JsonResult DeleteClientes([FromBody] Cliente clientes)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productos.SingleOrDefault(p => p.ID_producto == productos.ID_producto);
+                var existe = context.Clientes.SingleOrDefault(c => c.Id_cliente == clientes.Id_cliente);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Productos.Attach(productos);
-                    context.Entry(productos).State = EntityState.Deleted;
+                    context.Clientes.Attach(clientes);
+                    context.Entry(clientes).State = EntityState.Deleted;
                     context.SaveChanges();
                     flag = true;
                 }
             }
             return new JsonResult(flag);
-        } 
+        }
     }
 }

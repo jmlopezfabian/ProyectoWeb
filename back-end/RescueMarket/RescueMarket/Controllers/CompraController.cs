@@ -5,54 +5,56 @@ using RescueMarket.Model;
 
 namespace RescueMarket.Controllers
 {
-    [Route ("Productos")]
+    [Route("Compras")]
     [ApiController]
-    public class ProductoController : ControllerBase
+    public class CompraController : ControllerBase
     {
         [HttpGet]
-        public JsonResult ProductoGet()
+        public JsonResult GetCompras()
         {
-            List<Producto> productos = new List<Producto>();
+            List<Compra> compras = new List<Compra>();
             using (RMContext context = new RMContext())
             {
-                var aux = context.Productos;
+                var aux = context.Compras;
                 foreach(var item in aux)
                 {
-                    productos.Add(new Producto
+                    compras.Add(new Compra
                     {
+                        NumCompra = item.NumCompra,
+                        FechaCompra = item.FechaCompra,
+                        Cantidad = item.Cantidad,
+                        ID_cliente = item.ID_cliente,
                         ID_producto = item.ID_producto,
-                        Nombre_Producto = item.Nombre_Producto,
-                        Descripcion = item.Descripcion,
-                        Precio = item.Precio
+                        ID_productor = item.ID_productor,
                     });
                 }
             }
-            return new JsonResult(productos);
+            return new JsonResult(compras);
         }
         [HttpPost]
-        public JsonResult ProductoPost([FromBody] Producto productos)
+        public JsonResult PostCompras([FromBody] Compra compras)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                context.Productos.Add(productos);
+                context.Compras.Add(compras);
                 context.SaveChanges();
                 flag = true;
             }
             return new JsonResult(flag);
         }
         [HttpPatch]
-        public JsonResult UpdateProducto([FromBody] Producto productos)
+        public JsonResult UpdateCompras([FromBody] Compra compras)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productos.SingleOrDefault(p => p.ID_producto == productos.ID_producto);
+                var existe = context.Compras.SingleOrDefault(b => b.NumCompra == compras.NumCompra);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Productos.Attach(productos);
-                    context.Entry(productos).State = EntityState.Modified;
+                    context.Compras.Attach(compras);
+                    context.Entry(compras).State = EntityState.Modified;
                     context.SaveChanges();
                     flag = true;
                 }
@@ -60,22 +62,22 @@ namespace RescueMarket.Controllers
             return new JsonResult(flag);
         }
         [HttpDelete]
-        public JsonResult DeleteProducto([FromBody] Producto productos)
+        public JsonResult DeleteCompras([FromBody] Compra compras)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productos.SingleOrDefault(p => p.ID_producto == productos.ID_producto);
+                var existe = context.Comprass.SingleOrDefault(b => b.NumCompra == compras.NumCompra);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Productos.Attach(productos);
-                    context.Entry(productos).State = EntityState.Deleted;
+                    context.Comprass.Attach(compras);
+                    context.Entry(compras).State = EntityState.Deleted;
                     context.SaveChanges();
                     flag = true;
                 }
             }
             return new JsonResult(flag);
-        } 
+        }
     }
 }

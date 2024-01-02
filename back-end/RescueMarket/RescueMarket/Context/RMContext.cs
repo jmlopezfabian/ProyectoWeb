@@ -42,18 +42,27 @@ namespace RescueMarket.Context
                 entity.Property(p => p.Descripcion);
                 entity.Property(p => p.Precio);
             });
-            modelBuilder.Entity<Usuario>(entity =>
+            modelBuilder.Entity<Productor>(entity =>
             {
-                entity.HasKey(u => u.Id);
+                entity.HasKey(u => u.Id_productor);
                 entity.Property(u => u.NombreUsuario);
-                entity.Property(u => u.CorreoElectronico);
+                entity.Property(u => u.Correo);
                 entity.Property(u => u.Contrasena);
                 entity.Property(u => u.ApellidoPaterno);
                 entity.Property(u => u.ApellidoMaterno);
                 entity.Property(u => u.Nombre);
                 entity.Property(u => u.FechaNacimiento);
-
-
+                entity.Property(u => u.Telefono);
+                entity.Property(u => u.Direccion);
+            });
+            modelBuilder.Entity<Compra>(entity =>
+            {
+                entity.HasKey(b => b.NumCompra);
+                entity.Property(b => b.FechaCompra);
+                entity.Property(b => b.Cantidad);
+                entity.Property(b => b.Id_cliente);
+                entity.Property(b => b.Id_productor);
+                entity.Property(b => b.Id_producto);
             });
         }
     }

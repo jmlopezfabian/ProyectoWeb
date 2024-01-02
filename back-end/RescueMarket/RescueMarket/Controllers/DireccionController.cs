@@ -5,58 +5,54 @@ using RescueMarket.Model;
 
 namespace RescueMarket.Controllers
 {
-    [Route("Usuarios")]
+    [Route("Direcciones")]
     [ApiController]
-    public class UsuarioController : ControllerBase
+    public class DireccionController : ControllerBase
     {
         [HttpGet]
-        public JsonResult GetUsuarios()
+        public JsonResult GetDirecciones()
         {
-            List<Usuario> usuarios = new List<Usuario>();
+            List<Usuario> direcciones = new List<Direccion>();
             using (RMContext context = new RMContext())
             {
-                var aux = context.Usuarios;
+                var aux = context.Direcciones;
                 foreach(var item in aux)
                 {
-                    usuarios.Add(new Usuario
+                    direcciones.Add(new Direccion
                     {
-                        Id = item.Id,
-                        NombreUsuario = item.NombreUsuario,
-                        CorreoElectronico = item.CorreoElectronico,
-                        Contrasena = item.Contrasena,
-                        ApellidoPaterno = item.ApellidoPaterno,
-                        ApellidoMaterno = item.ApellidoMaterno,
-                        Nombre = item.Nombre,
-                        FechaNacimiento = item.FechaNacimiento
+                        Codigo_Postal = item.Codigo_Postal,
+                        Num_ext = item.Num_ext,
+                        Calle = item.Calle,
+                        Ciudad = item.Ciudad,
                     });
                 }
             }
-            return new JsonResult(usuarios);
+            return new JsonResult(direcciones);
         }
         [HttpPost]
-        public JsonResult PostUsuarios([FromBody] Usuario usuarios)
+        public JsonResult PostDirecciones([FromBody] Direccion direcciones)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                context.Usuarios.Add(usuarios);
+                context.Direcciones.Add(direcciones);
                 context.SaveChanges();
                 flag = true;
             }
             return new JsonResult(flag);
         }
         [HttpPatch]
-        public JsonResult UpdateUsuarios([FromBody] Usuario usuarios)
+        public JsonResult UpdateDirecciones([FromBody] Direccion direcciones)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Usuarios.SingleOrDefault(a => a.Id == usuarios.Id);
+                var existe = context.Direcciones.SingleOrDefault(d => d.Num_ext == direcciones.Num_ext);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Usuarios.Attach(usuarios);
-                    context.Entry(usuarios).State = EntityState.Modified;
+                    context.Direcciones.Attach(direcciones);
+                    context.Entry(direcciones).State = EntityState.Modified;
                     context.SaveChanges();
                     flag = true;
                 }
@@ -64,17 +60,17 @@ namespace RescueMarket.Controllers
             return new JsonResult(flag);
         }
         [HttpDelete]
-        public JsonResult DeleteUsuarios([FromBody] Usuario usuarios)
+        public JsonResult DeleteDirecciones([FromBody] Direccion direcciones)
         {
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Usuarios.SingleOrDefault(a => a.Id == usuarios.Id);
+                var existe = context.Direcciones.SingleOrDefault(d => d.Num_ext == direcciones.Num_ext);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Usuarios.Attach(usuarios);
-                    context.Entry(usuarios).State = EntityState.Deleted;
+                    context.Direcciones.Attach(direcciones);
+                    context.Entry(direcciones).State = EntityState.Deleted;
                     context.SaveChanges();
                     flag = true;
                 }
