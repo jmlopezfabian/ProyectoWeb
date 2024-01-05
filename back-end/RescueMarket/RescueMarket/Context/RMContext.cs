@@ -1,5 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RescueMarket.Model;
+using MySql.EntityFrameworkCore;
+using RescueMarket.Controllers;
+
 namespace RescueMarket.Context
 {
     public class RMContext : DbContext
@@ -11,7 +14,7 @@ namespace RescueMarket.Context
         public DbSet <Productor> Productores {  get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
-            builder.UseMySQL("server=localhost; database=proyectoweb; user=root; password=admin");
+            builder.UseMySQL("server = localhost; database = proyectoweb; user=root;password =Pasword123456");
         }
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
@@ -28,6 +31,7 @@ namespace RescueMarket.Context
             });
             modelBuilder.Entity<Direccion>(entity =>
             {
+                entity.Property(d => d.id);
                 entity.Property(d => d.Num_ext);
                 entity.Property(d => d.Calle);
                 entity.Property(d => d.Ciudad);

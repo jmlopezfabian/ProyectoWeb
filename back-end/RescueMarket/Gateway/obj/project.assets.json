@@ -927,19 +927,19 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\arman\\.nuget\\packages\\": {}
+    "C:\\Users\\jesus\\.nuget\\packages\\": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\arman\\Desktop\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\Gateway.csproj",
+      "projectUniqueName": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\Gateway.csproj",
       "projectName": "Gateway",
-      "projectPath": "C:\\Users\\arman\\Desktop\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\Gateway.csproj",
-      "packagesPath": "C:\\Users\\arman\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\arman\\Desktop\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\obj\\",
+      "projectPath": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\Gateway.csproj",
+      "packagesPath": "C:\\Users\\jesus\\.nuget\\packages\\",
+      "outputPath": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\Gateway\\obj\\",
       "projectStyle": "PackageReference",
       "configFilePaths": [
-        "C:\\Users\\arman\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\jesus\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
       "originalTargetFrameworks": [

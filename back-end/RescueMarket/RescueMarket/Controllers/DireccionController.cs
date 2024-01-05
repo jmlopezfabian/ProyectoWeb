@@ -20,6 +20,7 @@ namespace RescueMarket.Controllers
                 {
                     direcciones.Add(new Direccion
                     {
+                        id = item.id,
                         Codigo_Postal = item.Codigo_Postal,
                         Num_ext = item.Num_ext,
                         Calle = item.Calle,
