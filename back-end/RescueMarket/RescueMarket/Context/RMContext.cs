@@ -23,7 +23,7 @@ namespace RescueMarket.Context
             {
                 entity.HasKey(c => c.Correo);
                 entity.Property(c => c.Nombre_Usuario);
-                entity.Property(c => c.Contraseña);
+                entity.Property(c => c.Contrasena);
                 entity.Property(c => c.Apellido_Paterno);
                 entity.Property(c => c.Apellido_Materno);
                 entity.Property(c => c.Nombre);

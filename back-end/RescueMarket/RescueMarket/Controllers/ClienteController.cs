@@ -22,7 +22,7 @@ namespace RescueMarket.Controllers
                     {
                         Nombre_Usuario = item.Nombre_Usuario,
                         Correo = item.Correo,
-                        Contraseña = item.Contraseña,
+                        Contrasena = item.Contrasena,
                         Apellido_Paterno = item.Apellido_Paterno,
                         Apellido_Materno = item.Apellido_Materno,
                         Nombre = item.Nombre,
