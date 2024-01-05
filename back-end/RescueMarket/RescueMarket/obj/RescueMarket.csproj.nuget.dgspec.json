@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj": {}
+    "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj": {}
   },
   "projects": {
-    "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj": {
+    "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
+        "projectUniqueName": "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
         "projectName": "RescueMarket",
-        "projectPath": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
-        "packagesPath": "C:\\Users\\jesus\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\jesus\\source\\repos\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\obj\\",
+        "projectPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\RescueMarket.csproj",
+        "packagesPath": "C:\\Users\\jorge\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\jorge\\OneDrive\\Escritorio\\ProyectoWeb\\back-end\\RescueMarket\\RescueMarket\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\jesus\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\jorge\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
@@ -39,38 +39,6 @@
       "frameworks": {
         "net8.0": {
           "targetAlias": "net8.0",
-          "dependencies": {
-            "Microsoft.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.24, )"
-            },
-            "Microsoft.EntityFrameworkCore.Design": {
-              "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
-              "suppressParent": "All",
-              "target": "Package",
-              "version": "[6.0.24, )"
-            },
-            "Microsoft.EntityFrameworkCore.Relational": {
-              "target": "Package",
-              "version": "[6.0.24, )"
-            },
-            "MySql.Data": {
-              "target": "Package",
-              "version": "[8.2.0, )"
-            },
-            "MySql.EntityFrameworkCore": {
-              "target": "Package",
-              "version": "[6.0.21, )"
-            },
-            "Ocelot": {
-              "target": "Package",
-              "version": "[18.0.0, )"
-            },
-            "Swashbuckle.AspNetCore": {
-              "target": "Package",
-              "version": "[6.4.0, )"
-            }
-          },
           "imports": [
             "net461",
             "net462",
@@ -82,15 +50,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "frameworkReferences": {
-            "Microsoft.AspNetCore.App": {
-              "privateAssets": "none"
-            },
-            "Microsoft.NETCore.App": {
-              "privateAssets": "all"
-            }
-          },
-          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\8.0.100/PortableRuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\7.0.401\\RuntimeIdentifierGraph.json"
         }
       }
     }
