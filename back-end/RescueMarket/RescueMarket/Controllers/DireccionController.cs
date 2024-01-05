@@ -12,7 +12,7 @@ namespace RescueMarket.Controllers
         [HttpGet]
         public JsonResult GetDirecciones()
         {
-            List<Usuario> direcciones = new List<Direccion>();
+            List<Direccion> direcciones = new List<Direccion>();
             using (RMContext context = new RMContext())
             {
                 var aux = context.Direcciones;

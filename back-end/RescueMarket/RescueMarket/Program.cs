@@ -1,5 +1,6 @@
+using RescueMarket.Context;
 var builder = WebApplication.CreateBuilder(args);
-
+RMContext database = new RMContext();
 // Add services to the container.
 
 builder.Services.AddControllers();
@@ -15,7 +16,7 @@ if (app.Environment.IsDevelopment())
     app.UseSwagger();
     app.UseSwaggerUI();
 }
-
+database.Database.EnsureCreated();
 app.UseHttpsRedirection();
 
 app.UseAuthorization();
