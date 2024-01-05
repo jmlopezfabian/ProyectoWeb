@@ -6,6 +6,8 @@
         public string Nombre_Producto { get; set; }
         public string Descripción { get; set; }
         public int Precio { get; set; }
+        public string URL { get; set; }
+
 
     }
 }

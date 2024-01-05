@@ -20,7 +20,6 @@ namespace RescueMarket.Controllers
                 {
                     productores.Add(new Productor
                     {
-                        ID_productor = item.ID_productor,
                         Nombre_Usuario = item.Nombre_Usuario,
                         Correo = item.Correo,
                         Contraseña = item.Contraseña,
@@ -53,7 +52,7 @@ namespace RescueMarket.Controllers
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productores.SingleOrDefault(a => a.ID_productor == productores.ID_productor);
+                var existe = context.Productores.SingleOrDefault(a => a.Correo == productores.Correo);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
@@ -71,7 +70,7 @@ namespace RescueMarket.Controllers
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Productores.SingleOrDefault(a => a.ID_productor == productores.ID_productor);
+                var existe = context.Productores.SingleOrDefault(a => a.Correo == productores.Correo);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;

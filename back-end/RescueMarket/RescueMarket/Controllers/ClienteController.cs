@@ -18,16 +18,15 @@ namespace RescueMarket.Controllers
                 var aux = context.Clientes;
                 foreach(var item in aux)
                 {
-                    clientes.Add(new Usuario
+                    clientes.Add(new Cliente
                     {
-                        Id_cliente = item.Id_cliente,
-                        NombreUsuario = item.NombreUsuario,
+                        Nombre_Usuario = item.Nombre_Usuario,
                         Correo = item.Correo,
                         Contraseña = item.Contraseña,
-                        ApellidoPaterno = item.ApellidoPaterno,
-                        ApellidoMaterno = item.ApellidoMaterno,
+                        Apellido_Paterno = item.Apellido_Paterno,
+                        Apellido_Materno = item.Apellido_Materno,
                         Nombre = item.Nombre,
-                        FechaNacimiento = item.FechaNacimiento
+                        Fecha_nacimiento = item.Fecha_nacimiento
                     });
                 }
             }
@@ -51,7 +50,7 @@ namespace RescueMarket.Controllers
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Clientes.SingleOrDefault(c => c.Id_cliente == clientes.Id_cliente);
+                var existe = context.Clientes.SingleOrDefault(c => c.Correo == clientes.Correo);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
@@ -69,7 +68,7 @@ namespace RescueMarket.Controllers
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Clientes.SingleOrDefault(c => c.Id_cliente == clientes.Id_cliente);
+                var existe = context.Clientes.SingleOrDefault(c => c.Correo == clientes.Correo);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;

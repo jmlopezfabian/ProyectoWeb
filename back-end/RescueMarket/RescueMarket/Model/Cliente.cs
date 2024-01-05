@@ -2,7 +2,6 @@
 {
     public class Cliente
     {
-        public int  ID_cliente { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Correo { get; set; }
         public string Contraseña { get; set; }

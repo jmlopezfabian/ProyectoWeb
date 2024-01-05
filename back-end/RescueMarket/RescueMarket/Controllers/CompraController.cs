@@ -67,11 +67,11 @@ namespace RescueMarket.Controllers
             bool flag = false;
             using (RMContext context = new RMContext())
             {
-                var existe = context.Comprass.SingleOrDefault(b => b.NumCompra == compras.NumCompra);
+                var existe = context.Compras.SingleOrDefault(b => b.NumCompra == compras.NumCompra);
                 if (existe != null)
                 {
                     context.Entry(existe).State = EntityState.Detached;
-                    context.Comprass.Attach(compras);
+                    context.Compras.Attach(compras);
                     context.Entry(compras).State = EntityState.Deleted;
                     context.SaveChanges();
                     flag = true;

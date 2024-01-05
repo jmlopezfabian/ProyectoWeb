@@ -9,7 +9,6 @@ namespace RescueMarket.Context
         public DbSet <Direccion> Direcciones { get; set;}
         public DbSet <Producto> Productos { get; set; }
         public DbSet <Productor> Productores {  get; set; }
-        public DbSet <Usuario> Usuarios { get; set; }
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseMySQL("server=localhost; database=proyectoweb; user=root; password=admin");
@@ -19,9 +18,8 @@ namespace RescueMarket.Context
             base.OnModelCreating(modelBuilder);
             modelBuilder.Entity<Cliente>(entity =>
             {
-                entity.HasKey(c => c.ID_cliente);
+                entity.HasKey(c => c.Correo);
                 entity.Property(c => c.Nombre_Usuario);
-                entity.Property(c => c.Correo);
                 entity.Property(c => c.Contraseña);
                 entity.Property(c => c.Apellido_Paterno);
                 entity.Property(c => c.Apellido_Materno);
@@ -41,28 +39,28 @@ namespace RescueMarket.Context
                 entity.Property(p => p.Nombre_Producto);
                 entity.Property(p => p.Descripcion);
                 entity.Property(p => p.Precio);
+                entity.Property(p => p.URL);
             });
             modelBuilder.Entity<Productor>(entity =>
             {
-                entity.HasKey(u => u.Id_productor);
-                entity.Property(u => u.NombreUsuario);
-                entity.Property(u => u.Correo);
-                entity.Property(u => u.Contrasena);
-                entity.Property(u => u.ApellidoPaterno);
-                entity.Property(u => u.ApellidoMaterno);
+                entity.HasKey(u => u.Correo);
+                entity.Property(u => u.Nombre_Usuario);
+                entity.Property(u => u.Contraseña);
+                entity.Property(u => u.Apellido_Paterno);
+                entity.Property(u => u.Apellido_Materno);
                 entity.Property(u => u.Nombre);
-                entity.Property(u => u.FechaNacimiento);
+                entity.Property(u => u.Fecha_nacimiento);
                 entity.Property(u => u.Telefono);
-                entity.Property(u => u.Direccion);
+                entity.Property(u => u.Dirección);
             });
             modelBuilder.Entity<Compra>(entity =>
             {
                 entity.HasKey(b => b.NumCompra);
                 entity.Property(b => b.FechaCompra);
                 entity.Property(b => b.Cantidad);
-                entity.Property(b => b.Id_cliente);
-                entity.Property(b => b.Id_productor);
-                entity.Property(b => b.Id_producto);
+                entity.Property(b => b.ID_cliente);
+                entity.Property(b => b.ID_productor);
+                entity.Property(b => b.ID_producto);
             });
         }
     }

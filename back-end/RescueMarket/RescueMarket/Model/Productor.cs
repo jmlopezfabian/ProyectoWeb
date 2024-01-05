@@ -2,7 +2,6 @@
 {
     public class Productor
     {
-        public int ID_productor { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Correo { get; set; }
         public string Contraseña { get; set; }

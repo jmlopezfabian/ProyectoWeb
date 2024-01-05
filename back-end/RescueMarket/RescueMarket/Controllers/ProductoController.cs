@@ -23,7 +23,8 @@ namespace RescueMarket.Controllers
                         ID_producto = item.ID_producto,
                         Nombre_Producto = item.Nombre_Producto,
                         Descripcion = item.Descripcion,
-                        Precio = item.Precio
+                        Precio = item.Precio,
+                        URL = item.URL
                     });
                 }
             }
