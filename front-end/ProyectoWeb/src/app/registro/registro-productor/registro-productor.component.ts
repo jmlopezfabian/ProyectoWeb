@@ -4,11 +4,13 @@ import { registroProductorService } from '../../services/registro-productor.serv
 import { interval } from 'rxjs';
 import { resourceUsage } from 'process';
 import { resourceLimits } from 'worker_threads';
+import { RouterLink, RouterLinkActive } from '@angular/router';
+
 
 @Component({
   selector: 'app-registro-productor',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, RouterLink,RouterLinkActive],
   templateUrl: './registro-productor.component.html',
   styleUrl: './registro-productor.component.css'
 })
@@ -68,11 +70,7 @@ export interface Productor_Model{
 export interface DTOProductor{
   Nombre_Usuario?: string,
   Correo: String,
-  Contrasena: String,
   Nombre?: String,
-  Apellido_Paterno?: String,
-  Apellido_Materno?: String,
-  Fecha_nacimiento?: String,
   Telefono?: String,
   Calle?: String,
   Num_ext?: number,

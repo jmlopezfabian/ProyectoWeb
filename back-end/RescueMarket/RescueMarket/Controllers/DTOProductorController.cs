@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace RescueMarket.Controllers
 {
     [Route("DTO_Productores")]
+
     [ApiController]
     public class DTOProductorController : ControllerBase
     {
         [HttpGet]
-        public JsonResult GetProductores()
+        [Route("GetProductoresDTO")]
+        public JsonResult GetProductoresDTO()
         {
             List<DTO_Productor> productores = new List<DTO_Productor>();
 
@@ -35,5 +37,31 @@ namespace RescueMarket.Controllers
             }
             return new JsonResult(productores);
         }
+
+        [HttpGet]
+        [Route("GetProductorDTO")]
+        public JsonResult GetproductorDTO([FromBody] string correo)
+        {
+            DTO_Productor productor = new DTO_Productor();
+            using (RMContext contexto = new RMContext())
+            {
+                var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Correo == correo);
+                if(existe != null)
+                {
+                    productor.Correo = existe.Correo;
+                    productor.Nombre_Usuario = existe.Nombre_Usuario;
+                    productor.Nombre = existe.Nombre;
+                    productor.Telefono = existe.Telefono;
+                    productor.Num_ext = existe.Num_ext;
+                    productor.Calle = existe.Calle;
+                    productor.Ciudad = existe.Ciudad;
+                    productor.Codigo_Postal = existe.Codigo_Postal;
+                }
+            }
+
+            return new JsonResult(productor);
+        }
+
+        [HttpPost]
     }
 }

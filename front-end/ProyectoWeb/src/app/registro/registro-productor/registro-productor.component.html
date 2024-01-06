@@ -171,6 +171,9 @@
                   type="submit"
                   class="text-white bg-green-500 border-0 py-2 px-6 focus:outline-none hover:bg-green-600 rounded text-lg"
                   [disabled]="!formulario.form.valid"
+                  routerLink ="../productor"
+                  routerLinkActive="active" 
+                  [routerLinkActiveOptions]="{exact:true}"
               >
                   Enviar
               </button>
@@ -178,7 +181,6 @@
               @if(correoRegistrado_productor == true){
                 <h3 class="text-sm text-red-700 mb-2">Este correo ya esta registrado.</h3>
               }
-
           </div>
       </form>
   </div>
