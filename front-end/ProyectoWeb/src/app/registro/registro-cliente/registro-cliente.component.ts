@@ -11,16 +11,18 @@ import { FormsModule } from '@angular/forms';
   templateUrl: './registro-cliente.component.html',
   styleUrl: './registro-cliente.component.css'
 })
+
 export class RegistroClienteComponent {
   lista: DTOCliente[] = [];
+
   nuevoCliente: Cliente_Model = {
-    Nombre_Usuario: 'a',
-    Correo: 'a',
-    Contrasena: 'a',
-    Nombre: 'a',
-    Apellido_Materno: 'a',
-    Apellido_Paterno: 'a',
-    Fecha_nacimiento: 'a'
+    Nombre_Usuario: '',
+    Correo: '',
+    Contrasena: '',
+    Nombre: '',
+    Apellido_Materno: '',
+    Apellido_Paterno: '',
+    Fecha_nacimiento: ''
   };
 
   constructor(private pService: registroClienteService){
@@ -34,7 +36,6 @@ export class RegistroClienteComponent {
       console.log(response);
     });
   }
-
 }
 
 export interface Cliente_Model{

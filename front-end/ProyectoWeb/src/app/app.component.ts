@@ -7,6 +7,8 @@ import { HttpClientModule } from '@angular/common/http';
 import { ProductoService } from './services/producto.service';
 import { FormsModule } from '@angular/forms';
 import { registroClienteService } from './services/registro-cliente.service';
+import { registroProductorService } from './services/registro-productor.service';
+
 
 @Component({
   selector: 'app-root',
@@ -15,7 +17,8 @@ import { registroClienteService } from './services/registro-cliente.service';
   templateUrl: './app.component.html',
   styleUrl: './app.component.css',
   providers: [ProductoService,
-  registroClienteService]
+  registroClienteService,
+  registroProductorService]
 })
 export class AppComponent {
   title = 'RescueMarket';

@@ -49,13 +49,16 @@ namespace RescueMarket.Context
             {
                 entity.HasKey(u => u.Correo);
                 entity.Property(u => u.Nombre_Usuario);
-                entity.Property(u => u.Contraseña);
+                entity.Property(u => u.Contrasena);
                 entity.Property(u => u.Apellido_Paterno);
                 entity.Property(u => u.Apellido_Materno);
                 entity.Property(u => u.Nombre);
                 entity.Property(u => u.Fecha_nacimiento);
                 entity.Property(u => u.Telefono);
-                entity.Property(u => u.Dirección);
+                entity.Property(u => u.Num_ext);
+                entity.Property(u => u.Calle);
+                entity.Property(u => u.Ciudad);
+                entity.Property(u => u.Codigo_Postal);
             });
             modelBuilder.Entity<Compra>(entity =>
             {

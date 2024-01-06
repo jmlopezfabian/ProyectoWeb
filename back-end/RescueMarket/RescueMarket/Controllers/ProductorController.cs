@@ -22,13 +22,16 @@ namespace RescueMarket.Controllers
                     {
                         Nombre_Usuario = item.Nombre_Usuario,
                         Correo = item.Correo,
-                        Contraseña = item.Contraseña,
+                        Contrasena = item.Contrasena,
                         Nombre = item.Nombre,
                         Apellido_Paterno = item.Apellido_Paterno,
                         Apellido_Materno = item.Apellido_Materno,
                         Fecha_nacimiento = item.Fecha_nacimiento,
                         Telefono = item.Telefono,
-                        Dirección = item.Dirección
+                        Num_ext = item.Num_ext,
+                        Calle = item.Calle,
+                        Ciudad = item.Ciudad,
+                        Codigo_Postal = item.Codigo_Postal
                     });
                 }
             }

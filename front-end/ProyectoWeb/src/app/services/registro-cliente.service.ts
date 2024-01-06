@@ -10,10 +10,10 @@ export class registroClienteService {
   constructor(private http: HttpClient){}
 
   public obtenerClientes() : Observable<any>{
-    return this.http.get("https://localhost:7140/Clientes")
+    return this.http.get("https://localhost:7158/Clientes")
   }
 
   public createCliente(ClienteData: any): Observable<any> {
-    return this.http.post('https://localhost:7140/Clientes', ClienteData);
+    return this.http.post('https://localhost:7158/Clientes', ClienteData);
   }
 }
