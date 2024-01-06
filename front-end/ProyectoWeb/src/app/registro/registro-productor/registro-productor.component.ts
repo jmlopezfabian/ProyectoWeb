@@ -13,6 +13,8 @@ import { resourceLimits } from 'worker_threads';
   styleUrl: './registro-productor.component.css'
 })
 export class RegistroProductorComponent {
+  correoRegistrado_productor: boolean = false;
+
   lista: DTOProductor[] = [];
 
   nuevoProductor: Productor_Model = {
@@ -39,6 +41,10 @@ export class RegistroProductorComponent {
   enviarFormularioProductor(){
     this.pService.createProductor(this.nuevoProductor).subscribe(response  => {
       console.log(response);
+      if(response == false){
+        this.correoRegistrado_productor = true;
+        console.log("Este correo ya esta registrado");
+      }
     });
   }
 }

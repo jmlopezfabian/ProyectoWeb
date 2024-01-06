@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
+using MySqlX.XDevAPI;
 using RescueMarket.Context;
 using RescueMarket.Model;
 
@@ -40,14 +41,19 @@ namespace RescueMarket.Controllers
         [HttpPost]
         public JsonResult ProductorPost([FromBody] Productor productores)
         {
-            bool flag = false;
+            bool regreso = false;
             using (RMContext context = new RMContext())
             {
-                context.Productores.Add(productores);
-                context.SaveChanges();
-                flag = true;
+                var existe = context.Productores.SingleOrDefault(i => i.Correo == productores.Correo);
+
+                if (existe == null)
+                {
+                    context.Productores.Add(productores);
+                    context.SaveChanges();
+                    regreso = true;
+                }
             }
-            return new JsonResult(flag);
+            return new JsonResult(regreso);
         }
         [HttpPatch]
         public JsonResult UpdateProductor([FromBody] Productor productores)
