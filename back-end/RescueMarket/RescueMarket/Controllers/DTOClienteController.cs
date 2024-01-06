@@ -48,5 +48,29 @@ namespace RescueMarket.Controllers
 
             return new JsonResult(clientes);
         }
+
+
+        [HttpPost]
+        public JsonResult PostClienteDTO([FromBody] DTO_Cliente nuevo_cliente)
+        {
+            bool flag = false;
+            DTO_Cliente clientes = new DTO_Cliente();
+
+            using (RMContext contexto = new RMContext())
+            {
+                var existe = contexto.ClientesDTO.SingleOrDefault(i => i.Correo == nuevo_cliente.Correo);
+
+                if (existe == null)
+                {
+                    clientes.Correo = existe.Correo;
+                    clientes.Nombre_Usuario = existe.Nombre_Usuario;
+                    clientes.Nombre = existe.Nombre;
+                    flag = true;
+                }
+            }
+
+            return new JsonResult(clientes);
+        }
+
     }
 }
