@@ -1,15 +1,13 @@
-.vs/
-
-node_modules/
+# See http://help.github.com/ignore-files/ for more about ignoring files.
 
 # Compiled output
-/front-end/ProyectoWeb/dist
-/front-end/ProyectoWeb/tmp
-/front-end/ProyectoWeb/out-tsc
-/front-end/ProyectoWeb/bazel-out
+/dist
+/tmp
+/out-tsc
+/bazel-out
 
 # Node
-/front-end/ProyectoWeb/node_modules
+/node_modules
 npm-debug.log
 yarn-error.log
 
@@ -31,13 +29,13 @@ yarn-error.log
 .history/*
 
 # Miscellaneous
-/front-end/ProyectoWeb/.angular/cache
-/front-end/ProyectoWeb/.sass-cache/
-connect.lock
-coverage
-libpeerconnection.log
+/.angular/cache
+.sass-cache/
+/connect.lock
+/coverage
+/libpeerconnection.log
 testem.log
-typings
+/typings
 
 # System files
 .DS_Store
