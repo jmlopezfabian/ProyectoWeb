@@ -7,6 +7,8 @@ import { LoginComponent } from './login/login.component';
 import { RegistroComponent } from './registro/registro.component';
 import { RegistroClienteComponent } from './registro/registro-cliente/registro-cliente.component';
 import { RegistroProductorComponent } from './registro/registro-productor/registro-productor.component';
+import { ClienteComponent } from './paginas/usuario/cliente/cliente.component';
+import { ProductorComponent } from './paginas/usuario/productor/productor.component';
 
 
 export const routes: Routes = [
@@ -18,5 +20,7 @@ export const routes: Routes = [
     {path:"login", component:LoginComponent},
     {path:"registro", component:RegistroComponent},
     {path:'registroCliente',component:RegistroClienteComponent},
-    {path:'registroProductor',component:RegistroProductorComponent}
+    {path:'registroProductor',component:RegistroProductorComponent},
+    {path:'cliente',component:ClienteComponent},
+    {path:'productor/:id', component:ProductorComponent}
 ];

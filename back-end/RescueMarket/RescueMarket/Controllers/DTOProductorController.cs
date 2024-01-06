@@ -7,11 +7,13 @@ using Microsoft.AspNetCore.Mvc;
 namespace RescueMarket.Controllers
 {
     [Route("DTO_Productores")]
+
     [ApiController]
     public class DTOProductorController : ControllerBase
     {
         [HttpGet]
-        public JsonResult GetProductores()
+        [Route("GetProductoresDTO")]
+        public JsonResult GetProductoresDTO()
         {
             List<DTO_Productor> productores = new List<DTO_Productor>();
 

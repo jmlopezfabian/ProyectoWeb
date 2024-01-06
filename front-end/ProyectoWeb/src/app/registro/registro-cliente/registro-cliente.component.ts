@@ -3,11 +3,12 @@ import { response } from 'express';
 import { registroClienteService} from '../../services/registro-cliente.service';
 import { interval } from 'rxjs';
 import { FormsModule } from '@angular/forms';
+import { RouterLink, RouterLinkActive } from '@angular/router';
 
 @Component({
   selector: 'app-registro-cliente',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule,RouterLink,RouterLinkActive],
   templateUrl: './registro-cliente.component.html',
   styleUrl: './registro-cliente.component.css'
 })
