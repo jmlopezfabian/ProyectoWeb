@@ -45,31 +45,31 @@ export class RegistroProductorComponent {
 
 
 export interface Productor_Model{
-  Nombre_Usuario: string,
+  Nombre_Usuario?: string,
   Correo: String,
   Contrasena: String,
-  Nombre: String,
-  Apellido_Paterno: String,
-  Apellido_Materno: String,
-  Fecha_nacimiento: String,
-  Telefono: String,
-  Calle: String,
-  Num_ext: number,
-  Ciudad: String,
-  Codigo_Postal: String
+  Nombre?: String,
+  Apellido_Paterno?: String,
+  Apellido_Materno?: String,
+  Fecha_nacimiento?: String,
+  Telefono?: String,
+  Calle?: String,
+  Num_ext?: number,
+  Ciudad?: String,
+  Codigo_Postal?: String
 }
 
 export interface DTOProductor{
-  Nombre_Usuario: string,
+  Nombre_Usuario?: string,
   Correo: String,
   Contrasena: String,
-  Nombre: String,
-  Apellido_Paterno: String,
-  Apellido_Materno: String,
-  Fecha_nacimiento: String,
-  Telefono: String,
-  Calle: String,
-  Num_ext: number,
-  Ciudad: String,
-  Codigo_Postal: String
+  Nombre?: String,
+  Apellido_Paterno?: String,
+  Apellido_Materno?: String,
+  Fecha_nacimiento?: String,
+  Telefono?: String,
+  Calle?: String,
+  Num_ext?: number,
+  Ciudad?: String,
+  Codigo_Postal?: String
 }

@@ -111,6 +111,11 @@
                 >
                     Enviar
                 </button>
+
+                @if(correoRegistrado_cliente == true){
+                    <h3 class="text-sm text-red-700 mb-2">Este correo ya esta registrado.</h3>
+                }
+
             </div>
         </form>
     </div>

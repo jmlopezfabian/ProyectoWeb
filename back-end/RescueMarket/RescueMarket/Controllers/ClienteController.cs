@@ -35,14 +35,19 @@ namespace RescueMarket.Controllers
         [HttpPost]
         public JsonResult PostUsuarios([FromBody] Cliente clientes)
         {
-            bool flag = false;
+            bool regreso = false;
             using (RMContext context = new RMContext())
             {
-                context.Clientes.Add(clientes);
-                context.SaveChanges();
-                flag = true;
+                var existe = context.Clientes.SingleOrDefault(i => i.Correo == clientes.Correo);
+
+                if (existe == null)
+                {
+                    context.Clientes.Add(clientes);
+                    context.SaveChanges();
+                    regreso = true;
+                }
             }
-            return new JsonResult(flag);
+            return new JsonResult(regreso);
         }
         [HttpPatch]
         public JsonResult UpdateClientes([FromBody] Cliente clientes)

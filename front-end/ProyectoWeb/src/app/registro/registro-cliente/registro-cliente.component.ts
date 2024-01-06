@@ -13,6 +13,8 @@ import { FormsModule } from '@angular/forms';
 })
 
 export class RegistroClienteComponent {
+  correoRegistrado_cliente: boolean = false;
+
   lista: DTOCliente[] = [];
 
   nuevoCliente: Cliente_Model = {
@@ -34,14 +36,19 @@ export class RegistroClienteComponent {
   enviarFormulario(){
     this.pService.createCliente(this.nuevoCliente).subscribe(response  => {
       console.log(response);
+      if(response == false){
+        this.correoRegistrado_cliente = true;
+        console.log("Este correo ya esta registrado");
+      }
     });
   }
+
 }
 
 export interface Cliente_Model{
   Nombre_Usuario?: string,
   Correo: String,
-  Contrasena?: String,
+  Contrasena: String,
   Nombre?: String,
   Apellido_Paterno?: String,
   Apellido_Materno?: String,

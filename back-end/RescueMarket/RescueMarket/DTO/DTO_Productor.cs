@@ -2,6 +2,7 @@
 {
     public class DTO_Productor
     {
+        public string Correo { get; set; }
         public string Nombre_Usuario { get; set; }
         public string Nombre { get; set; }
         public string Telefono { get; set; }

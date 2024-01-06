@@ -8,7 +8,7 @@ import { ProductoService } from './services/producto.service';
 import { FormsModule } from '@angular/forms';
 import { registroClienteService } from './services/registro-cliente.service';
 import { registroProductorService } from './services/registro-productor.service';
-
+import { LoginService } from './services/login.service';
 
 @Component({
   selector: 'app-root',
@@ -18,7 +18,8 @@ import { registroProductorService } from './services/registro-productor.service'
   styleUrl: './app.component.css',
   providers: [ProductoService,
   registroClienteService,
-  registroProductorService]
+  registroProductorService,
+  LoginService]
 })
 export class AppComponent {
   title = 'RescueMarket';

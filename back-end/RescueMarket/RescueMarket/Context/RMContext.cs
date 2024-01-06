@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using RescueMarket.Model;
+using RescueMarket.DTO;
 using MySql.EntityFrameworkCore;
 using RescueMarket.Controllers;
 
@@ -12,6 +13,13 @@ namespace RescueMarket.Context
         public DbSet <Direccion> Direcciones { get; set;}
         public DbSet <Producto> Productos { get; set; }
         public DbSet <Productor> Productores {  get; set; }
+
+        public DbSet <DTO_Cliente> ClientesDTO { get; set; }
+        public DbSet <DTO_Compra> CompraDTO { get; set; }
+        public DbSet <DTO_Producto> ProductoDTO { get; set; }
+
+        public DbSet <DTO_Productor> ProductorDTO { get; set; }
+
         protected override void OnConfiguring(DbContextOptionsBuilder builder)
         {
             builder.UseMySQL("server = localhost; database = proyectoweb; user=root;password =Pasword123456");
@@ -68,6 +76,43 @@ namespace RescueMarket.Context
                 entity.Property(b => b.ID_cliente);
                 entity.Property(b => b.ID_productor);
                 entity.Property(b => b.ID_producto);
+            });
+
+            //DTO
+            modelBuilder.Entity<DTO_Cliente>(entity =>
+            {
+                entity.HasKey(a => a.Correo);
+                entity.Property(a => a.Nombre_Usuario);
+                entity.Property(a => a.Nombre);
+            });
+
+            modelBuilder.Entity<DTO_Productor>(entity =>
+            {
+                entity.HasKey(a => a.Correo);
+                entity.Property(a => a.Nombre_Usuario);
+                entity.Property(a => a.Nombre);
+                entity.Property(a => a.Telefono);
+                entity.Property(a => a.Num_ext);
+                entity.Property(a => a.Calle);
+                entity.Property(a => a.Ciudad);
+                entity.Property(a => a.Codigo_Postal);
+            });
+
+            modelBuilder.Entity<DTO_Compra>(entity =>
+            {
+                entity.HasKey(a => a.NumCompra);
+                entity.Property(a => a.FechaCompra);
+                entity.Property(a => a.Cantidad);
+                entity.Property(a => a.ID_producto);
+            });
+
+            modelBuilder.Entity<DTO_Producto>(entity =>
+            {
+                entity.HasKey(a => a.ID_producto);
+                entity.Property(a => a.Nombre_Producto);
+                entity.Property(a => a.Descripcion);
+                entity.Property(a => a.Precio);
+                entity.Property(a => a.URL);
             });
         }
     }

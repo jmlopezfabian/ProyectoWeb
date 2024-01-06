@@ -17,14 +17,14 @@ namespace RescueMarket.Controllers
 
             using(RMContext context = new RMContext())
             {
-                var aux = context.Producto;
+                var aux = context.ProductoDTO;
                 foreach (var item in aux)
                 {
                     productos.Add(new DTO_Producto
                     {
                         ID_producto = item.ID_producto,
                         Nombre_Producto = item.Nombre_Producto,
-                        Descripción = item.Descripción,
+                        Descripcion = item.Descripcion,
                         Precio = item.Precio,
                         URL = item.URL
                     });

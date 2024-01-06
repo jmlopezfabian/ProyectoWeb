@@ -17,7 +17,7 @@ namespace RescueMarket.Controllers
 
             using (RMContext context = new RMContext())
             {
-                var aux = context.Compra;
+                var aux = context.CompraDTO;
                 foreach (var item in aux)
                 {
                     compras.Add(new DTO_Compra

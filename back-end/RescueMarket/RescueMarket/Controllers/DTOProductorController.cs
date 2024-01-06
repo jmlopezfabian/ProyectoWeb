@@ -17,33 +17,23 @@ namespace RescueMarket.Controllers
 
             using(RMContext context = new RMContext())
             {
-                var aux = context.Productor;
+                var aux = context.ProductorDTO;
                 foreach (var item in aux)
                 {
                     productores.Add(new DTO_Productor
                     {
+                        Correo = item.Correo,
                         Nombre_Usuario = item.Nombre_Usuario,
-                        Direccion = item.Direccion,
                         Nombre = item.Nombre,
-                        Telefono = item.Telefono
+                        Telefono = item.Telefono,
+                        Num_ext = item.Num_ext,
+                        Calle = item.Calle,
+                        Ciudad = item.Ciudad,
+                        Codigo_Postal = item.Codigo_Postal
                     });
                 }
             }
             return new JsonResult(productores);
-        }
-        [HttpPost]
-        public bool LoginMethod([FromBody] string admin, string Contra)
-        {
-            bool comprobacion = false;
-            using (RMContext context = new RMContext())
-            {
-                var existe = context.Productor.SingleOrDefault(u=>u.Nombre_Usuario == admin && u.Contraseña == Contra);
-                if(existe != null)
-                {
-                    comprobacion = true;
-                }
-                return comprobacion;
-            }
         }
     }
 }
