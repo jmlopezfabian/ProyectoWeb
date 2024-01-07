@@ -4,7 +4,8 @@ import { registroProductorService } from '../../services/registro-productor.serv
 import { interval } from 'rxjs';
 import { resourceUsage } from 'process';
 import { resourceLimits } from 'worker_threads';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import { RouterLink, RouterLinkActive} from '@angular/router';
+import { Router } from '@angular/router';
 
 
 @Component({
@@ -17,8 +18,13 @@ import { RouterLink, RouterLinkActive } from '@angular/router';
 export class RegistroProductorComponent {
   correoRegistrado_productor: boolean = false;
 
+  nuevoProductorDTO: DTOProductor={
+    Correo: ''
+  }
+
   lista: DTOProductor[] = [];
 
+  
   nuevoProductor: Productor_Model = {
     Nombre_Usuario: '',
     Correo: '',
@@ -34,20 +40,38 @@ export class RegistroProductorComponent {
     Codigo_Postal: ''
   }
 
-  constructor(private pService: registroProductorService){
+
+  constructor(private pService: registroProductorService, private router: Router){
     this.pService.obtenerProductores().subscribe(resoult => {
       this.lista = resoult.productor;
     })
   }
 
+  
+
   enviarFormularioProductor(){
+    this.nuevoProductorDTO.Nombre_Usuario = this.nuevoProductor.Nombre_Usuario;
+    this.nuevoProductorDTO.Correo = this.nuevoProductor.Correo;
+    this.nuevoProductorDTO.Nombre = this.nuevoProductor.Nombre;
+    this.nuevoProductorDTO.Telefono = this.nuevoProductor.Telefono;
+    this.nuevoProductorDTO.Calle = this.nuevoProductor.Calle;
+    this.nuevoProductorDTO.Num_ext = this.nuevoProductor.Num_ext;
+    this.nuevoProductorDTO.Ciudad = this.nuevoProductor.Ciudad;
+    this.nuevoProductorDTO.Codigo_Postal = this.nuevoProductor.Codigo_Postal;
+
     this.pService.createProductor(this.nuevoProductor).subscribe(response  => {
       console.log(response);
       if(response == false){
         this.correoRegistrado_productor = true;
         console.log("Este correo ya esta registrado");
+      }else{
+        this.pService.createProductorDTO(this.nuevoProductorDTO).subscribe(responseDTO => {
+          console.log(responseDTO);
+        })
       }
     });
+
+    this.router.navigate(['/productor',this.nuevoProductorDTO.Nombre_Usuario]);
   }
 }
 

@@ -11,9 +11,19 @@ import { registroProductorService } from '../../../services/registro-productor.s
   templateUrl: './productor.component.html',
   styleUrl: './productor.component.css'
 })
+
 export class ProductorComponent {
-  constructor(private pService: registroProductorService){
-    this.pService.
+  productor: DTOProductor = {
+    Correo: ''
+  }
+  
+
+  constructor(private route: ActivatedRoute){
+    this.route.params.subscribe(params => {
+      const user_name = params["id"];
+
+      
+    })
   }
 }
 
