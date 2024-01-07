@@ -35,7 +35,7 @@ namespace RescueMarket.Controllers
 
         [HttpGet]
 
-        public JsonResult GetclientesDTO([FromBody] string correo)
+        public JsonResult GetclientesDTO([FromQuery] string correo)
         {
             DTO_Cliente cliente = new DTO_Cliente();
             using (RMContext contexto = new RMContext())

@@ -41,7 +41,7 @@ namespace RescueMarket.Controllers
         }
 
         [HttpGet]
-        public JsonResult GetproductorDTO([FromBody] string correo)
+        public JsonResult GetproductorDTO([FromQuery] string correo)
         {
             DTO_Productor productor = new DTO_Productor();
             using (RMContext contexto = new RMContext())

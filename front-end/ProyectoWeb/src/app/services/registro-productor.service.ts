@@ -19,6 +19,6 @@ import { Observable } from 'rxjs';
     }
 
     public obtenerProductorDTO(correo: string): Observable<any>{
-      return this.http.get("https://localhost:7140/DTO_Productores", correo);
+      return this.http.get("https://localhost:7140/DTO_Productores");
     }
 }
