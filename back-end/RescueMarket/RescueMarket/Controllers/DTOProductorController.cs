@@ -3,6 +3,8 @@ using RescueMarket.DTO;
 using RescueMarket.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
+using Org.BouncyCastle.Pqc.Crypto.Falcon;
 
 namespace RescueMarket.Controllers
 {
@@ -65,13 +67,11 @@ namespace RescueMarket.Controllers
         public JsonResult PostProductorDTO([FromBody] DTO_Productor nuevo_productor)
         {
             bool flag = false;
-            DTO_Productor productor = new DTO_Productor();
 
             using (RMContext contexto = new RMContext())
             {
                 var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Correo == nuevo_productor.Correo);
 
-                bool flag = false;
                 if (existe == null)
                 {
                     contexto.ProductorDTO.Add(nuevo_productor);
@@ -83,56 +83,44 @@ namespace RescueMarket.Controllers
             return new JsonResult(flag);
         }
 
-        [HttpPatch("{correo}")]
-        public IActionResult PatchProductorDTO(string correo, [FromBody] DTO_Productor productorModificado)
+        [HttpPatch]
+        public IActionResult PatchProductorDTO([FromBody] DTO_Productor productorModificado)
         {
+            bool flag = false;
             using (RMContext contexto = new RMContext())
             {
-                var productorExistente = contexto.ProductorDTO.SingleOrDefault(p => p.Correo == correo);
+                var productorExistente = contexto.ProductorDTO.SingleOrDefault(p => p.Correo == productorModificado.Correo);
 
-                if (productorExistente == null)
+                if (productorExistente != null)
                 {
-                    productorExistente.Nombre_Usuario = productorModificado.Nombre_Usuario;
-
-                    productorExistente.Nombre = productorModificado.Nombre;
-
-                    productorExistente.Telefono = productorModificado.Telefono;
-
-                    productorExistente.Num_ext = productorModificado.Num_ext;
-
-                    productorExistente.Calle = productorModificado.Calle;
-
-                    productorExistente.Ciudad = productorModificado.Ciudad;
-
-                    productorExistente.Codigo_Postal = productorModificado.Codigo_Postal;
-
-                    // Guardar los cambios en la base de datos
+                    contexto.Entry(productorExistente).State = EntityState.Detached;
+                    contexto.ProductorDTO.Attach(productorModificado);
+                    contexto.Entry(productorModificado).State = EntityState.Modified;
                     contexto.SaveChanges();
                     flag = true;
                 }
-                return new JsonResult(productorExistente);
+                return new JsonResult(flag);
             }
         }
 
         [HttpDelete]
-        public JsonResult DeleteProductorDTO([FromBody] DTO_Productor productor)
+        public JsonResult DeleteProductorDTO([FromBody] string correo)
         {
             bool flag = false;
-            using (RMContext context = new RMContext())
+            using (RMContext contexto = new RMContext())
             {
-                var existe = context.Productores.SingleOrDefault(a => a.Correo == productor.Correo);
-                if (existe != null)
+                var productorExistente = contexto.ProductorDTO.SingleOrDefault(p => p.Correo == correo);
+
+                if (productorExistente != null)
                 {
-                    context.Entry(existe).State = EntityState.Detached;
-                    context.Productores.Attach(productores);
-                    context.Entry(productores).State = EntityState.Deleted;
-                    context.SaveChanges();
+                    contexto.Entry(productorExistente).State = Microsoft.EntityFrameworkCore.EntityState.Detached;
+                    contexto.ProductorDTO.Attach(productorExistente);
+                    contexto.Entry(productorExistente).State = EntityState.Modified;
+                    contexto.SaveChanges();
                     flag = true;
                 }
+                return new JsonResult(flag);
             }
-            return new JsonResult(flag);
         }
-
-
     }
 }

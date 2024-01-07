@@ -3,6 +3,7 @@ using RescueMarket.DTO;
 using RescueMarket.Model;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace RescueMarket.Controllers
 {
@@ -11,11 +12,12 @@ namespace RescueMarket.Controllers
     public class DTOClienteController : ControllerBase
     {
         [HttpGet]
+        [Route("GetClientesDTO")]
         public JsonResult GetClientes()
         {
             List<DTO_Cliente> clientes = new List<DTO_Cliente>();
 
-            using(RMContext context = new RMContext())
+            using (RMContext context = new RMContext())
             {
                 var aux = context.ClientesDTO;
                 foreach (var item in aux)
@@ -32,21 +34,22 @@ namespace RescueMarket.Controllers
         }
 
         [HttpGet]
+
         public JsonResult GetclientesDTO([FromBody] string correo)
         {
-            DTO_Cliente clientes = new DTO_Cliente();
+            DTO_Cliente cliente = new DTO_Cliente();
             using (RMContext contexto = new RMContext())
             {
                 var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Correo == correo);
                 if (existe != null)
                 {
-                    clientes.Correo = existe.Correo;
-                    clientes.Nombre_Usuario = existe.Nombre_Usuario;
-                    clientes.Nombre = existe.Nombre;
+                    cliente.Correo = existe.Correo;
+                    cliente.Nombre_Usuario = existe.Nombre_Usuario;
+                    cliente.Nombre = existe.Nombre;
                 }
             }
 
-            return new JsonResult(clientes);
+            return new JsonResult(cliente);
         }
 
 
@@ -54,7 +57,6 @@ namespace RescueMarket.Controllers
         public JsonResult PostClienteDTO([FromBody] DTO_Cliente nuevo_cliente)
         {
             bool flag = false;
-            DTO_Cliente clientes = new DTO_Cliente();
 
             using (RMContext contexto = new RMContext())
             {
@@ -62,14 +64,13 @@ namespace RescueMarket.Controllers
 
                 if (existe == null)
                 {
-                    clientes.Correo = existe.Correo;
-                    clientes.Nombre_Usuario = existe.Nombre_Usuario;
-                    clientes.Nombre = existe.Nombre;
+                    contexto.ClientesDTO.Add(nuevo_cliente);
+                    contexto.SaveChanges();
                     flag = true;
                 }
             }
 
-            return new JsonResult(clientes);
+            return new JsonResult(flag);
         }
 
 
@@ -77,6 +78,7 @@ namespace RescueMarket.Controllers
         [HttpPatch]
         public JsonResult PatchClienteDTO(string correo, [FromBody] DTO_Cliente clienteModificado)
         {
+            bool flag = false;
             using (RMContext contexto = new RMContext())
             {
                 var clienteExistente = contexto.ClientesDTO.SingleOrDefault(c => c.Correo == clienteModificado.Correo);
@@ -86,46 +88,50 @@ namespace RescueMarket.Controllers
                     return new JsonResult(new { error = "Cliente no encontrado" }) { StatusCode = 404 };
                 }
 
-                // Aplicar las modificaciones parciales
-                if (clienteModificado.Nombre_Usuario != null)
+
+                else
                 {
-                    clienteExistente.Nombre_Usuario = clienteModificado.Nombre_Usuario;
+                    contexto.Entry(clienteExistente).State = EntityState.Detached;
+                    contexto.ClientesDTO.Attach(clienteModificado);
+                    contexto.Entry(clienteModificado).State = EntityState.Modified;
+                    contexto.SaveChanges();
+                    flag = true;
+
                 }
 
-                if (clienteModificado.Nombre != null)
-                {
-                    clienteExistente.Nombre = clienteModificado.Nombre;
-                }
-
-                // Guardar los cambios en la base de datos
-                contexto.SaveChanges();
-
-                return new JsonResult(clienteExistente);
+                return new JsonResult(flag);
             }
         }
 
 
-    }
-    [HttpDelete]
-    public JsonResult DeleteClientesDTO([FromBody] DTO_Cliente clienteModificado)
-    {
-        bool flag = false;
-        using (RMContext context = new RMContext())
+
+
+        [HttpDelete]
+        public JsonResult DeleteClienteDTO([FromBody] DTO_Cliente clienteModificado)
         {
-            var clienteExiste = context.ClientesDTO.SingleOrDefault(c => c.Correo == clienteModificado.Correo);
-            if (existe == null)
+            bool flag = false;
+            using (RMContext contexto = new RMContext())
             {
-                context.Entry(existe).State = EntityState.Detached;
-                context.Clientes.Attach(clientes);
-                context.Entry(clientes).State = EntityState.Deleted;
-                context.SaveChanges();
-                flag = true;
+                var clienteExistente = contexto.ClientesDTO.SingleOrDefault(c => c.Correo == clienteModificado.Correo);
+
+                if (clienteExistente == null)
+                {
+                    return new JsonResult(new { error = "Cliente no encontrado" }) { StatusCode = 404 };
+                }
+
+
+                else
+                {
+                    contexto.Entry(clienteExistente).State = EntityState.Detached;
+                    contexto.ClientesDTO.Attach(clienteModificado);
+                    contexto.Entry(clienteModificado).State = EntityState.Deleted;
+                    contexto.SaveChanges();
+                    flag = true;
+
+                }
+
+                return new JsonResult(flag);
             }
         }
-        return new JsonResult(flag);
-    }
-}
-}
-
     }
 }

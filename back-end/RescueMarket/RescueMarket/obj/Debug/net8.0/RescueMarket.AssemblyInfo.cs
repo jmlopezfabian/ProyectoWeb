@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("RescueMarket")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+abaffa80cf708e6286223d4dda2d620e64c1306d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+035185d556d8430ebf924f007e1c2c3d1f1ab30c")]
 [assembly: System.Reflection.AssemblyProductAttribute("RescueMarket")]
 [assembly: System.Reflection.AssemblyTitleAttribute("RescueMarket")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]
