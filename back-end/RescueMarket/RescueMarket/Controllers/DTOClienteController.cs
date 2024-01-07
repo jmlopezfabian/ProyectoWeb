@@ -79,7 +79,7 @@ namespace RescueMarket.Controllers
         {
             using (RMContext contexto = new RMContext())
             {
-                var clienteExistente = contexto.ClientesDTO.SingleOrDefault(c => c.Correo == correo);
+                var clienteExistente = contexto.ClientesDTO.SingleOrDefault(c => c.Correo == clienteModificado.Correo);
 
                 if (clienteExistente == null)
                 {
@@ -104,6 +104,28 @@ namespace RescueMarket.Controllers
             }
         }
 
+
+    }
+    [HttpDelete]
+    public JsonResult DeleteClientesDTO([FromBody] DTO_Cliente clienteModificado)
+    {
+        bool flag = false;
+        using (RMContext context = new RMContext())
+        {
+            var clienteExiste = context.ClientesDTO.SingleOrDefault(c => c.Correo == clienteModificado.Correo);
+            if (existe == null)
+            {
+                context.Entry(existe).State = EntityState.Detached;
+                context.Clientes.Attach(clientes);
+                context.Entry(clientes).State = EntityState.Deleted;
+                context.SaveChanges();
+                flag = true;
+            }
+        }
+        return new JsonResult(flag);
+    }
+}
+}
 
     }
 }
