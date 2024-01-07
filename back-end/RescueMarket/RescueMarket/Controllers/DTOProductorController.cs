@@ -73,19 +73,13 @@ namespace RescueMarket.Controllers
 
                 if (existe == null)
                 {
-                    productor.Correo = existe.Correo;
-                    productor.Nombre_Usuario = existe.Nombre_Usuario;
-                    productor.Nombre = existe.Nombre;
-                    productor.Telefono = existe.Telefono;
-                    productor.Num_ext = existe.Num_ext;
-                    productor.Calle = existe.Calle;
-                    productor.Ciudad = existe.Ciudad;
-                    productor.Codigo_Postal = existe.Codigo_Postal;
+                    contexto.ProductorDTO.Add(nuevo_productor);
+                    contexto.SaveChanges();
                     flag = true;
                 }
             }
 
-            return new JsonResult(productor);
+            return new JsonResult(flag);
         }
 
 

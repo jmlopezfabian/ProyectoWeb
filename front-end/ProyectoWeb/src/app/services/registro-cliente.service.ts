@@ -7,7 +7,8 @@ import { Observable } from 'rxjs';
 })
 export class registroClienteService {
 
-  constructor(private http: HttpClient){}
+  constructor(private http: HttpClient){ }
+
 
   public obtenerClientes() : Observable<any>{
     return this.http.get("https://localhost:7158/Clientes")
@@ -16,4 +17,5 @@ export class registroClienteService {
   public createCliente(ClienteData: any): Observable<any> {
     return this.http.post('https://localhost:7158/Clientes', ClienteData);
   }
+
 }

@@ -17,4 +17,8 @@ import { Observable } from 'rxjs';
     public createProductor(ProductorData: any): Observable<any> {
       return this.http.post('https://localhost:7158/Productores', ProductorData);
     }
+
+    public obtenerProductorDTO(correo: string): Observable<any>{
+      return this.http.get("https://localhost:7140/DTO_Productores", correo);
+    }
 }
