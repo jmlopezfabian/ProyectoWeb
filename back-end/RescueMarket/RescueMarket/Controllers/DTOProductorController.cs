@@ -120,7 +120,24 @@ namespace RescueMarket.Controllers
             }
         }
 
-
+        [HttpDelete]
+        public JsonResult DeleteProductorDTO([FromBody] DTO_Productor productor)
+        {
+            bool flag = false;
+            using (RMContext context = new RMContext())
+            {
+                var existe = context.Productores.SingleOrDefault(a => a.Correo == productor.Correo);
+                if (existe != null)
+                {
+                    context.Entry(existe).State = EntityState.Detached;
+                    context.Productores.Attach(productores);
+                    context.Entry(productores).State = EntityState.Deleted;
+                    context.SaveChanges();
+                    flag = true;
+                }
+            }
+            return new JsonResult(flag);
+        }
 
 
     }
