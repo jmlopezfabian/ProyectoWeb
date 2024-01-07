@@ -71,6 +71,7 @@ namespace RescueMarket.Controllers
             {
                 var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Correo == nuevo_productor.Correo);
 
+                bool flag = false;
                 if (existe == null)
                 {
                     productor.Correo = existe.Correo;
@@ -86,6 +87,37 @@ namespace RescueMarket.Controllers
             }
 
             return new JsonResult(productor);
+        }
+
+        [HttpPatch("{correo}")]
+        public IActionResult PatchProductorDTO(string correo, [FromBody] DTO_Productor productorModificado)
+        {
+            using (RMContext contexto = new RMContext())
+            {
+                var productorExistente = contexto.ProductorDTO.SingleOrDefault(p => p.Correo == correo);
+
+                if (productorExistente == null)
+                {
+                    productorExistente.Nombre_Usuario = productorModificado.Nombre_Usuario;
+
+                    productorExistente.Nombre = productorModificado.Nombre;
+
+                    productorExistente.Telefono = productorModificado.Telefono;
+
+                    productorExistente.Num_ext = productorModificado.Num_ext;
+
+                    productorExistente.Calle = productorModificado.Calle;
+
+                    productorExistente.Ciudad = productorModificado.Ciudad;
+
+                    productorExistente.Codigo_Postal = productorModificado.Codigo_Postal;
+
+                    // Guardar los cambios en la base de datos
+                    contexto.SaveChanges();
+                    flag = true;
+                }
+                return new JsonResult(productorExistente);
+            }
         }
 
 
