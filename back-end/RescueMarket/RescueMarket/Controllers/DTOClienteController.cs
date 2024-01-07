@@ -72,5 +72,38 @@ namespace RescueMarket.Controllers
             return new JsonResult(clientes);
         }
 
+
+
+        [HttpPatch]
+        public JsonResult PatchClienteDTO(string correo, [FromBody] DTO_Cliente clienteModificado)
+        {
+            using (RMContext contexto = new RMContext())
+            {
+                var clienteExistente = contexto.ClientesDTO.SingleOrDefault(c => c.Correo == correo);
+
+                if (clienteExistente == null)
+                {
+                    return new JsonResult(new { error = "Cliente no encontrado" }) { StatusCode = 404 };
+                }
+
+                // Aplicar las modificaciones parciales
+                if (clienteModificado.Nombre_Usuario != null)
+                {
+                    clienteExistente.Nombre_Usuario = clienteModificado.Nombre_Usuario;
+                }
+
+                if (clienteModificado.Nombre != null)
+                {
+                    clienteExistente.Nombre = clienteModificado.Nombre;
+                }
+
+                // Guardar los cambios en la base de datos
+                contexto.SaveChanges();
+
+                return new JsonResult(clienteExistente);
+            }
+        }
+
+
     }
 }
