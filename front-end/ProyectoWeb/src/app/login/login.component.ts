@@ -1,9 +1,12 @@
 import { Component } from '@angular/core';
-import { Cliente_Model } from '../registro/registro-cliente/registro-cliente.component';
+import { Cliente_Model,DTOCliente} from '../registro/registro-cliente/registro-cliente.component';
 import { Productor_Model } from '../registro/registro-productor/registro-productor.component';
 import { LoginService } from '../services/login.service';
 import { RouterLink, RouterLinkActive } from '@angular/router';
 import { FormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { registroClienteService } from '../services/registro-cliente.service';
+import { registroProductorService } from '../services/registro-productor.service';
 
 @Component({
   selector: 'app-login',
@@ -14,38 +17,55 @@ import { FormsModule } from '@angular/forms';
 })
 export class LoginComponent {
 
-  cliente: Cliente_Model = {
-    Correo: '',
-    Contrasena: ''
+  cliente_login: Cliente_Model = {
+    correo: '',
+    contrasena: '',
   };
 
-  proveedor: Productor_Model= {
-    Correo: '',
-    Contrasena: ''
+  clienteDTO: DTOCliente = {
+    nombre_Usuario: '',
+    nombre: '',
+    correo: ''
+  }
+
+  proveedor_login: Productor_Model= {
+    correo: '',
+    contrasena: ''
   };
 
   mostrarError_cliente: boolean = false;
   mostrarError_productor: boolean = false;
-  constructor(private login: LoginService){}
+  constructor(private login: LoginService,private router: Router, private pService: registroProductorService,private cService: registroClienteService){}
 
   loginCliente(){
-    this.login.loginCliente(this.cliente.Correo,this.cliente.Contrasena).subscribe(response =>{
+    console.log(this.proveedor_login);
+    this.login.loginCliente(this.cliente_login.correo,this.cliente_login.contrasena).subscribe(response =>{
       console.log(response);
       if(response == false){
         this.mostrarError_cliente = true;
         console.log("Usuario o contraseña incorrectos");
+      }else{
+        this.cService.obtenerClienteDTO(this.cliente_login.correo).subscribe(response2 =>{
+          console.log(response2);
+          this.router.navigate(['/cliente',response2.nombre_Usuario]);
+        })
       }
+
     });
   }
 
-  loginProductor(){
-    this.login.loginProductor(this.cliente.Correo,this.cliente.Contrasena).subscribe(response =>{
+  loginProductor() {
+    this.login.loginProductor(this.proveedor_login.correo, this.proveedor_login.contrasena).subscribe(response => {
       console.log(response);
-      if(response == false){
+      if (response == false) {
         this.mostrarError_productor = true;
         console.log("Usuario o contraseña incorrectos");
+      } else {
+        this.pService.obtenerProductorDTO(this.proveedor_login.correo).subscribe(response2 => {
+          console.log(response2);
+          this.router.navigate(['/productor', response2.nombre_Usuario]);
+        });
       }
-    })
+    });
   }
-  
 }

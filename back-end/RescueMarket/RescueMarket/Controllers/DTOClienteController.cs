@@ -40,7 +40,7 @@ namespace RescueMarket.Controllers
             DTO_Cliente cliente = new DTO_Cliente();
             using (RMContext contexto = new RMContext())
             {
-                var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Correo == correo);
+                var existe = contexto.ClientesDTO.SingleOrDefault(i => i.Correo == correo);
                 if (existe != null)
                 {
                     cliente.Correo = existe.Correo;
@@ -50,6 +50,25 @@ namespace RescueMarket.Controllers
             }
 
             return new JsonResult(cliente);
+        }
+
+        [HttpGet]
+        [Route("GetClienteDTO_USER")]
+        public JsonResult GetClienteDTO_USER([FromQuery] string user_name)
+        {
+            DTO_Cliente productor = new DTO_Cliente();
+            using (RMContext contexto = new RMContext())
+            {
+                var existe = contexto.ClientesDTO.SingleOrDefault(i => i.Nombre_Usuario == user_name);
+                if (existe != null)
+                {
+                    productor.Correo = existe.Correo;
+                    productor.Nombre_Usuario = existe.Nombre_Usuario;
+                    productor.Nombre = existe.Nombre;
+                }
+            }
+
+            return new JsonResult(productor);
         }
 
 

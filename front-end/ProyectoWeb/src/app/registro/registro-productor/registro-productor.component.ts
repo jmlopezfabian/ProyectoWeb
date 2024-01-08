@@ -19,25 +19,25 @@ export class RegistroProductorComponent {
   correoRegistrado_productor: boolean = false;
 
   nuevoProductorDTO: DTOProductor={
-    Correo: ''
+    correo: ''
   }
 
   lista: DTOProductor[] = [];
 
   
   nuevoProductor: Productor_Model = {
-    Nombre_Usuario: '',
-    Correo: '',
-    Contrasena: '',
-    Nombre: '',
-    Apellido_Materno: '',
-    Apellido_Paterno: '',
-    Fecha_nacimiento: '',
-    Telefono: '',
-    Calle: '',
-    Num_ext: 0,
-    Ciudad: '',
-    Codigo_Postal: ''
+    nombre_Usuario: '',
+    correo: '',
+    contrasena: '',
+    nombre: '',
+    apellido_Materno: '',
+    apellido_Paterno: '',
+    fecha_nacimiento: '',
+    telefono: '',
+    calle: '',
+    num_ext: 0,
+    ciudad: '',
+    codigo_Postal: ''
   }
 
 
@@ -50,14 +50,14 @@ export class RegistroProductorComponent {
   
 
   enviarFormularioProductor(){
-    this.nuevoProductorDTO.Nombre_Usuario = this.nuevoProductor.Nombre_Usuario;
-    this.nuevoProductorDTO.Correo = this.nuevoProductor.Correo;
-    this.nuevoProductorDTO.Nombre = this.nuevoProductor.Nombre;
-    this.nuevoProductorDTO.Telefono = this.nuevoProductor.Telefono;
-    this.nuevoProductorDTO.Calle = this.nuevoProductor.Calle;
-    this.nuevoProductorDTO.Num_ext = this.nuevoProductor.Num_ext;
-    this.nuevoProductorDTO.Ciudad = this.nuevoProductor.Ciudad;
-    this.nuevoProductorDTO.Codigo_Postal = this.nuevoProductor.Codigo_Postal;
+    this.nuevoProductorDTO.nombre_Usuario = this.nuevoProductor.nombre_Usuario;
+    this.nuevoProductorDTO.correo = this.nuevoProductor.correo;
+    this.nuevoProductorDTO.nombre = this.nuevoProductor.nombre;
+    this.nuevoProductorDTO.telefono = this.nuevoProductor.telefono;
+    this.nuevoProductorDTO.calle = this.nuevoProductor.calle;
+    this.nuevoProductorDTO.num_ext = this.nuevoProductor.num_ext;
+    this.nuevoProductorDTO.ciudad = this.nuevoProductor.ciudad;
+    this.nuevoProductorDTO.codigo_Postal = this.nuevoProductor.codigo_Postal;
 
     this.pService.createProductor(this.nuevoProductor).subscribe(response  => {
       console.log(response);
@@ -67,37 +67,39 @@ export class RegistroProductorComponent {
       }else{
         this.pService.createProductorDTO(this.nuevoProductorDTO).subscribe(responseDTO => {
           console.log(responseDTO);
+
+          this.router.navigate(['/productor',this.nuevoProductorDTO.nombre_Usuario]);
         })
       }
     });
 
-    this.router.navigate(['/productor',this.nuevoProductorDTO.Nombre_Usuario]);
+    
   }
 }
 
 
 export interface Productor_Model{
-  Nombre_Usuario?: string,
-  Correo: String,
-  Contrasena: String,
-  Nombre?: String,
-  Apellido_Paterno?: String,
-  Apellido_Materno?: String,
-  Fecha_nacimiento?: String,
-  Telefono?: String,
-  Calle?: String,
-  Num_ext?: number,
-  Ciudad?: String,
-  Codigo_Postal?: String
+  nombre_Usuario?: string,
+  correo: String,
+  contrasena: String,
+  nombre?: String,
+  apellido_Paterno?: String,
+  apellido_Materno?: String,
+  fecha_nacimiento?: String,
+  telefono?: String,
+  calle?: String,
+  num_ext?: number,
+  ciudad?: String,
+  codigo_Postal?: String
 }
 
 export interface DTOProductor{
-  Nombre_Usuario?: string,
-  Correo: String,
-  Nombre?: String,
-  Telefono?: String,
-  Calle?: String,
-  Num_ext?: number,
-  Ciudad?: String,
-  Codigo_Postal?: String
+  nombre_Usuario?: String,
+  correo: String,
+  nombre?: String,
+  telefono?: String,
+  calle?: String,
+  num_ext?: number,
+  ciudad?: String,
+  codigo_Postal?: String
 }

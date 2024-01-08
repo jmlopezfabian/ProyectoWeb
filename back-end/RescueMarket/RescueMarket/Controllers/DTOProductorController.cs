@@ -63,6 +63,30 @@ namespace RescueMarket.Controllers
             return new JsonResult(productor);
         }
 
+        [HttpGet]
+        [Route("GetProductorDTO_USER")]
+        public JsonResult GetproductorDTO_USER([FromQuery] string user_name)
+        {
+            DTO_Productor productor = new DTO_Productor();
+            using (RMContext contexto = new RMContext())
+            {
+                var existe = contexto.ProductorDTO.SingleOrDefault(i => i.Nombre_Usuario == user_name);
+                if (existe != null)
+                {
+                    productor.Correo = existe.Correo;
+                    productor.Nombre_Usuario = existe.Nombre_Usuario;
+                    productor.Nombre = existe.Nombre;
+                    productor.Telefono = existe.Telefono;
+                    productor.Num_ext = existe.Num_ext;
+                    productor.Calle = existe.Calle;
+                    productor.Ciudad = existe.Ciudad;
+                    productor.Codigo_Postal = existe.Codigo_Postal;
+                }
+            }
+
+            return new JsonResult(productor);
+        }
+
         [HttpPost]
         public JsonResult PostProductorDTO([FromBody] DTO_Productor nuevo_productor)
         {

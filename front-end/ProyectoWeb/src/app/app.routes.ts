@@ -10,7 +10,6 @@ import { RegistroProductorComponent } from './registro/registro-productor/regist
 import { ClienteComponent } from './paginas/usuario/cliente/cliente.component';
 import { ProductorComponent } from './paginas/usuario/productor/productor.component';
 
-
 export const routes: Routes = [
     {path:"", component:IncioComponent},
     {path:"inicio", component:IncioComponent},
@@ -21,6 +20,6 @@ export const routes: Routes = [
     {path:"registro", component:RegistroComponent},
     {path:'registroCliente',component:RegistroClienteComponent},
     {path:'registroProductor',component:RegistroProductorComponent},
-    {path:'cliente',component:ClienteComponent},
+    {path:'cliente/:id',component:ClienteComponent},
     {path:'productor/:id', component:ProductorComponent}
 ];
